@@ -11,10 +11,10 @@ use Laminas\Escaper\Escaper;
 final class FormController
 {
     private Escaper $esc;
-
-    public function __construct(
-        private readonly ContactFormValidator $validator
-    ) {
+    private readonly ContactFormValidator $validator;
+    
+    public function __construct(ContactFormValidator $val) {
+        $this->validator = $val;
         $this->esc = new Escaper('utf-8');
     }
 
@@ -29,7 +29,7 @@ final class FormController
 
     public function handleSubmit(Request $request): Response
     {
-        $post = $request->post();
+        $post = $request->post(); //dentro $post ci sono i dati inviati dal form
         $result = $this->validator->validate($post);
 
         if ($result['errors'] !== []) {
@@ -63,7 +63,8 @@ HTML;
      */
     private function renderForm(string $title, array $errors, array $old): string
     {
-        $e = fn(string $v) => $this->esc->escapeHtml($v);
+        //converte a stringa $v e poi la passa
+        $e = fn(string $v) => $this->esc->escapeHtml($v); //questo serve per non far scrivere agli utenti cose pericolose
 
         $err = function (string $key) use ($errors, $e): string {
             return isset($errors[$key])

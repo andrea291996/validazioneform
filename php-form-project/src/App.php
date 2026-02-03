@@ -21,6 +21,7 @@ final class App
     {
         $method = $request->method();
         $path = $request->path();
+        
 
         if ($method === 'GET' && $path === '/') {
             return $this->formController->showForm($request);

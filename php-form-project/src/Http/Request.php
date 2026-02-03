@@ -18,6 +18,9 @@ final class Request
 
     public static function fromGlobals(): self
     {
+        //var_dump($_GET);
+        //var_dump($_POST);
+        //print_r($_SERVER);
         return new self($_GET, $_POST, $_SERVER);
     }
 
