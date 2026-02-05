@@ -33,8 +33,9 @@ final class Request
     {
         $uri = (string)($this->server['REQUEST_URI'] ?? '/');
         $path = parse_url($uri, PHP_URL_PATH);
-        //$path = false;
-        //var_dump($path);
+        if($path === false){
+            echo "ORA E' FALSE"; exit;
+        }
         return $path ?: '/';
     }
 

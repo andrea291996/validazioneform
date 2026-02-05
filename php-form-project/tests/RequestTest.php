@@ -106,7 +106,7 @@ class RequestTest extends TestCase{
             'BLABLA' => '::1',
             'BLABLABLA' => '55078',
             'REQUEST_METHOD' => 'GET',
-            'REQUEST_URI' => '0'                        //VA BENE? così $path=false ? 
+            'REQUEST_URI' => 0                        
         ]);
 
         $controllo = $request->path();
