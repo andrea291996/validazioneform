@@ -8,9 +8,5 @@ require __DIR__ . '/../vendor/autoload.php';
 
 $app = new App();
 $request = Request::fromGlobals(); 
-//var_dump($request);
-
 $response = $app->handle($request);
-//var_dump($response);
-
 $response->send();

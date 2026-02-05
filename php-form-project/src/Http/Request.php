@@ -33,6 +33,8 @@ final class Request
     {
         $uri = (string)($this->server['REQUEST_URI'] ?? '/');
         $path = parse_url($uri, PHP_URL_PATH);
+        //$path = false;
+        //var_dump($path);
         return $path ?: '/';
     }
 
